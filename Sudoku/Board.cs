@@ -8,6 +8,7 @@ namespace Sudoku
     {
         public Board(int?[,] cells) => 
             Cells = cells ?? throw new ArgumentNullException(nameof(cells));
+
         int? [,] Cells { get; }
         int N => Cells.Length;
 
