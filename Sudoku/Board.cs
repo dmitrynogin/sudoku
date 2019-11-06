@@ -6,11 +6,8 @@ namespace Sudoku
 {
     public class Board
     {
-        public Board(int? [,] cells)
-        {
+        public Board(int?[,] cells) => 
             Cells = cells ?? throw new ArgumentNullException(nameof(cells));
-        }
-
         int? [,] Cells { get; }
         int N => Cells.Length;
 
@@ -27,7 +24,8 @@ namespace Sudoku
         IEnumerable<IEnumerable<int>> Grids => 
             from r in Range(0, N / 3)
             from c in Range(0, N / 3)
-            select Numbers(c * 3, c * 3 + 2, r * 3, r * 3 + 2);
+            select Numbers(
+                c * 3, c * 3 + 2, r * 3, r * 3 + 2);
                
         bool AllUnique(IEnumerable<int> numbers) =>
             numbers.Distinct().Count() == numbers.Count();
