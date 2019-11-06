@@ -6,8 +6,14 @@ namespace Sudoku
 {
     public class Board
     {
-        public Board(int?[,] cells) => 
+        public Board(int?[,] cells)
+        {
             Cells = cells ?? throw new ArgumentNullException(nameof(cells));
+            if(Cells.GetLength(0) != Cells.GetLength(1))
+                throw new ArgumentNullException(nameof(cells), "Square board required.");
+            if (Cells.GetLength(0) % 3 != 0)
+                throw new ArgumentNullException(nameof(cells), "Board size should be multiple of 3.");
+        }
 
         int? [,] Cells { get; }
         int N => Cells.Length;
