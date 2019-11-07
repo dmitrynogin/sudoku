@@ -16,7 +16,7 @@ namespace Sudoku
         }
 
         int? [,] Cells { get; }
-        int N => Cells.Length;
+        int N => Cells.GetLength(0);
 
         public bool Valid => ColumnsValid && RowsValid && GridsValid;
 
