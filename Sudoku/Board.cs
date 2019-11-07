@@ -20,9 +20,9 @@ namespace Sudoku
 
         public bool Valid => ColumnsValid && RowsValid && GridsValid;
 
-        bool RowsValid => Rows.All(AllUnique);
-        bool ColumnsValid => Columns.All(AllUnique);
-        bool GridsValid => Grids.All(AllUnique);
+        bool RowsValid => Rows.All(AreUnique);
+        bool ColumnsValid => Columns.All(AreUnique);
+        bool GridsValid => Grids.All(AreUnique);
 
         IEnumerable<IEnumerable<int>> Rows => 
             Range(0, N).Select(r => Numbers(0, N - 1, r, r));
@@ -34,7 +34,7 @@ namespace Sudoku
             select Numbers(
                 c * 3, c * 3 + 2, r * 3, r * 3 + 2);
                
-        bool AllUnique(IEnumerable<int> numbers) =>
+        bool AreUnique(IEnumerable<int> numbers) =>
             numbers.Distinct().Count() == numbers.Count();
 
         IEnumerable<int> Numbers(int left, int right, int top, int bottom) =>
